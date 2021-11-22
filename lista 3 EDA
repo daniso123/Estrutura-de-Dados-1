@@ -1,0 +1,127 @@
+1.  Seja v um vetor com endereço inicial 1000.  Considere o seguinte código.
+
+
+int v[5] = {1, 2, 3, 4, 5};
+int *ptr;
+ptr = v;
+
+
+Qual o resultado de cada operação a seguir?  Justifique.
+
+•ptr+1;
+O resultado é o endereço de memoria de 2.
+
+•(*ptr)+1; 
+Ele esta apontando para o valor da segunda posição ou seja v = 2.
+
+•*(ptr+1);
+Esse tambem aponta para o valor 2.
+
+•*(ptr+10);
+Aponta para lixo de memoria pois v só tem de 0 a 5 posições, nessa operação pula 10 posições.
+
+
+
+4.  Considere as declarações:
+int vetor[10];
+int *ponteiro;
+Diga quais expressões abaixo são válidas ou não, e justifique sua resposta.
+
+•vetor = vetor + 2; Não é valida.Pois ja foi determinado o tamanho do vetor.
+
+•vetor++; Não é valida.Pois ja foi determinado o tamanho do vetor.
+
+•vetor = ponteiro;Não é valida.
+
+•ponteiro = vetor; Valida pois o "ponteiro" tem o mesmo valor do vetor mas como ele é um ponteiro ele vai apontar para o valor de memoria do vetor.
+
+•ponteiro = vetor + 2;Valida pois tem o mesma logica da operação aterior porem com um acrescimo de 2 ou seja ele vai apontar para segunda posição de memoria do vetor.
+
+
+
+
+5.  O que faz a seguinte função? percorre um vetor v com n posições.
+
+void imprime (char *v, int n) {
+
+char *c;
+
+for (c = v; c < v + n; c++)
+
+printf ("%c", *c);
+
+}
+
+
+
+
+13.  O código a seguir possui duas funções:  atroca_int, para trocar o valor de duas variáveis inteiras, e a troca_str, para trocar o valor de duas strings.  O código funciona?  Se não,por quê?  Como arrumar? O codigo não funciona pois não consegue acessar a função troca_str. O codigo a seguir mostra a função troca_str arrumada. O tmp é igual ao ponteiro x, que é igual ao ponteiro y, e y é igual a tmp fazendo assim a troca de x e y. Foi declarado na main o char*si,*s2 que são ponteiro então na função troca_str o x e y precisam ser ponteiro de ponteiro pra chamar s1 e s2.quando eu chamo a função troca_str eu preciso colocar & para chamar o valor de s1 e s2 assim :troca_str (&s1, &s2).
+
+#include <stdio.h>
+
+void troca_int (int *x, int *y) {
+int tmp;
+tmp = *x;
+*x = *y;
+*y = tmp;
+}
+
+void troca_str (char **x, char **y) {
+char *tmp;
+tmp = *x;
+*x = *y;
+*y = tmp;
+}
+
+int main() {
+
+int a, b;
+
+char *s1, *s2;
+a = 3;
+b = 4;
+troca_int (&a, &b);
+printf("a is %d\n", a);
+printf("b is %d\n", b);
+s1 = "Eu deveria aparecer depois";
+
+s2 = "Eu deveria aparecer primeiro";
+troca_str (&s1, &s2);
+
+printf("s1 is %s\n", s1);
+printf("s2 is %s\n", s2);
+
+return 0;
+
+}
+
+15.  Implemente uma função concat() que concatena 2 (dois) strings recebidos como argumentos.  A função deve retornar um ponteiro para o string resultante da concatenação.Use ponteiros e alocação dinamica o máximo possível.
+
+
+
+#include<stdio.h>
+
+char* concat(char *s1, char *s2) {
+    int i, j;
+
+    for (i = 0; s1[i] != '\0'; ++i);
+    for (j = 0; s2[j] != '\0'; ++j, ++i) {
+        s1[i] = s2[j];
+    }
+    s1[i] = '\0';
+    return s1;
+}
+
+int main(){
+
+    char s1[] = "abc";
+    char s2[] = "defg";
+
+    *concat(s1, s2);
+
+
+printf("%s\n", s1);
+
+return 0;
+}
+

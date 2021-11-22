@@ -1,0 +1,102 @@
+algoritmo de ordenação 
+
+
+ordenação por contagem 
+
+premissa: Os dados a serem ordenados estão contidos num intervalo.(digamos de o a n)
+
+
+entrada: vetor com n elementos
+auxiliar: vetor de b - a + 1 posições
+
+1- Zera as posições do vetor auxiliar.
+2- Para cada ocorrencia de i em v, incrementa-se aux[i]
+
+
+
+
+void ord_contagem(int *v, int n, int a, int b){
+
+	int *aux = calloc (b - a + 1, sizeof (int));
+		for(int i = 0; i< n; i++){ //conta ocorencia de cada elemento de v.
+
+		   aux[v[i]-a]++;
+ 	    	   int j =0;
+                for(int i = 0; i< b - a + 1; i++){
+
+		    while(aux[i]> 0){
+			v[j]=i + a;
+			 j++;
+			 aux[i]--;(contagem depende de b-a)
+	
+			}
+		}
+		
+	}
+
+}
+fee(aux);
+
+obs: Comoa constante que multipica n na complexidade depende de b-a, se o intervalo [a, b] for muito grande, o algoritmo ordenação por contagem pode ser pior que algum o(n²);
+ex: Ordenar um vetor de 100 elementos variado de 0  a 2bilhões.
+Custo de um o(n²)~ 100² = 10⁴
+Custo do ordenação 2x10⁴x100~ 10^11 contagem 
+
+
+ordenação por distribuição 
+
+
+
+|38  | 63 | 90 | 42 | 37 | 10 | 84 | 18 | 55 | 77 | 65 | 13 |
+	k
+
+| 90 | 10 | 42 | 63 | 13 | 84 | 55 | 65 | 37 | 77 | 38 | 18 |
+
+| 10 | 13 | 18 | 37 | 38 | 42 | 55 | 63 | 65 | 77 | 84 | 90 |
+
+
+
+|_ d passos
+   |_ 0 ate 9 = 10 percorridos no vetor  10xdxn
+
+
+
+
+void orde_distribuicao(char **v, int n, int d){
+
+
+	for(i = d-1; i<= 0; i--){ //cada um dos digitos 
+
+	   for(j = 0;l=0; j< 10; j++){//procura de 0 a 9
+		for(k = 0; k< n; k++){
+
+		if(valores[k][i] - '0' == j){
+
+			troca(valores, k,l,d);
+			  l ++;
+			
+				}
+
+
+			}
+	
+		}
+	}
+
+
+
+}
+
+
+void troca(char **v, int k, int l, int d){
+
+	char *tmp = malloc(d* sizeof(char));
+
+	strcpy(tmp,valores[k]);
+	strcpy(valores[k], valores[l]);
+	strcpy(valores[l], tmp);
+	free(tmp);
+	
+
+
+}

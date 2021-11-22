@@ -1,0 +1,141 @@
+Revisão EDA1
+
+
+1-Ponteiros
+
+
+Alocação 
+
+*Estatica => ela declara uma variação de qualquer tipo.
+
+*Dinâmica => Para usar precisa urilizar um ponteiro que vai apontar o endereço de memoria.
+int *ptr;
+o ponteiro tbm é uma variavel que armazena endereço de memoria.
+
+-Indireção => quando o ponteiro aponta para uma variavel ; ptr=&x;
+(& operador de endereçamento)
+-Aritmética de ponteiro => prt - prt +1;//1004
+-Alocação dinamica => ptr= malloc(sizeof(int)), inicializa um ponteiro com uma alocação para separar um espaço na memoria de tamanho int ptr => espaço de 4 bytes;  desalocação = free(ptr);
+
+
+
+int mian(){
+
+
+	int x;
+	int *ptr = malloc(...);
+
+}
+
+
+NULL constante da biblioteca stdlib.h que vale 0, ele é um ponteiro que vale 0;
+
+
+APLICAÇÕES 
+
+1- Passagem por referência
+
+
+toda função  passa por parametros .
+int media (int x, int y){
+
+    x = x+ 10;
+    return (x+9y)/2;
+
+}
+
+
+a =3; b=2;
+media(a,b);
+
+
+2- Vetores
+
+
+O vetor sempre é passado por referencia.
+
+void inverteStr(char **str1,char **str2){
+
+    char **tmp;
+    *tmp = *str1;
+    *str1 = *str2;       custo: O(1)
+    *str2 = *tmp;         com laço : O(n)   n: tam.string
+
+
+}
+
+
+
+inverteStr(&str1, &str2);
+
+
+
+
+
+2- Recursão
+
+
+
+-Caso base
+
+
+-Combinação das soluções
+
+Caracteristicas Recursivas
+
+Resolver um problema equivale à resolução de uma instancia menor do mesmo problema.
+PILHA DO SISTEMA     ÁRVORE DE RECURSÃO 
+
+
+Problema: Inverter uma string 
+1- recursão
+
+void inveteStr(char srt[], int i){
+	if(str[i] == '\0') return;
+	else {
+
+	inverteStr(srt, i+1);
+	printf("%c", srt[i]);
+
+	}
+
+} 
+
+
+
+IS(str, 0) => 
+             IS(str,1)=>
+                        IS(str,2)=>
+                                   IS(str,3)=> 
+                                              IS(str,4)=>
+                                                          IS(str,5)
+
+
+2- Não recursiva utilizando pilha
+
+
+void inverteStr2(char srt[]){
+
+        cria_pilha();
+	for(int i =0; str[i]!='\0';i++)
+	  empilha (str[i]);
+
+	char c;
+while (desempilha(&c)){
+	printf("%c", c);
+
+}rolac
+
+
+3- lista encadeada
+
+
+
+int altura(celula *c){
+
+   if(c == NULL)return 0;
+   else return altura (c->prox)+1;
+}
+}
+
+

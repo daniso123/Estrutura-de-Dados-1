@@ -1,0 +1,124 @@
+Algoritmos de ordenação
+
+
+bjetivo : ordenar um conjunto de dados;
+
+
+Slection Sort
+
+
+void selectionSort(int *v, int n){
+
+	int menor;
+for(int i = 0; i< n; i++){
+
+	menor =i;
+
+  for(int j =i; j<n; j++){
+
+    if(v[j]< v[menor])menor = j;
+
+		}
+	troca(&v[i], &v[menor]);
+	}
+
+}
+void troca(int *a, int *b){
+
+   int tmp = *a;
+   *a = *b;
+   *b =tmp;
+	
+}
+
+
+
+o(n²);
+
+
+recursão 
+
+
+void selectionSortRec(int *v, int i, int n){
+
+	if(i< n){
+	int menor =i;
+	   for(int j = i+1; j< n; j++){
+
+		if(v[j]< v[menor])menor = j;
+
+}
+
+  troca(&v[i], v[menor]);
+  selectionSortRec(v, i+1, n);
+
+}
+}
+
+main: SelectionSortRec(v,0,n);
+
+
+
+
+insertion Sort
+
+
+void insertionSort(int *v,int n){
+   for(int i = 1; i< n; i++){
+	int j = i;
+	while(j>= 1 && v[j]< v[j - 1])
+	    troca(&v[j]; &v[j - 1]);
+		j --;
+
+	}
+
+}
+
+conflexidade 
+melhor caso: o(n);
+pior caso: o(n²); (n² + n)/2;
+
+
+resursivo 
+
+
+
+void insertionSortRec(int *v, int n){
+   if(n > 0){
+	
+	sertionSortRec(v, n - 1);
+	int j = n;
+	while(j >= 1 && v[j]<v[j - 1]){
+		
+		troca(&v[j], &v[j - 1]);
+		j --;
+
+		}	
+	}
+	
+
+}
+
+no main: insertionSortRec(v,n);
+
+
+void bubbleSort(int *v, int n){
+
+	int inversão;
+	do{
+		inversão = 0;
+		for(int i = 1; i< n; i++){
+
+		  if(v[i]<v[i - 1]){
+			troca(&v[i], &v[i - 1]);
+			inversão = 1;
+
+			}
+
+		}
+	}while(inversão);
+
+}
+
+melhor caso: o(n);
+pior caso: o(n²);
